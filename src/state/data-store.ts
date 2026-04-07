@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import type { User, Product, Category, DataStore } from './types';
+import type { User, Product, Category, Order, DataStore } from './types';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -45,7 +45,7 @@ const createDataStore = <T>(endpoint: string) =>
         });
         if (!response.ok) throw new Error(`Failed to create ${endpoint}: ${response.status}`);
         const data = await response.json();
-        set((state) => ({ item: data, isLoading: false }));
+        set(() => ({ item: data, isLoading: false }));
       } catch (err: any) {
         set({ error: err.message, isLoading: false });
       }
@@ -87,3 +87,4 @@ const createDataStore = <T>(endpoint: string) =>
 export const useCategoryStore = createDataStore<Category>('category');
 export const useUserStore = createDataStore<User>('user');
 export const useProductStore = createDataStore<Product>('product');
+export const useOrderStore = createDataStore<Order>('order')

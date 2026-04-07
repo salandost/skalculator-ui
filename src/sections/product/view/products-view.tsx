@@ -62,6 +62,7 @@ export function ProductsView() {
 
   useEffect(() => {
     getData();
+    console.log('Data ok')
   }, [getData]);
 
   const [sortBy, setSortBy] = useState('featured');

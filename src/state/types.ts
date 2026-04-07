@@ -10,6 +10,15 @@ export interface DataStore<T> {
   deleteItem?: (id: number) => Promise<void>;
 }
 
+type ColorScheme = 'dark' | 'light'
+
+export interface LocalStore {
+  theme: ColorScheme;
+  user: User | null;
+  setTheme: (theme: ColorScheme) => void;
+  login: () => Promise<void>
+}
+
 export interface User {
   id: number;
   name: string;
@@ -33,6 +42,24 @@ export interface Product {
 export interface Category {
   id: number;
   name: string;
+  created_at: string;
+  updated_at: string | null;
+  deleted_at: string | null;
+}
+
+export interface Order {
+  id: number;
+  user_id: number;
+  order_items: OrderItem[];
+  created_at: string;
+  updated_at: string | null;
+  deleted_at: string | null;
+}
+
+export interface OrderItem {
+  id: number;
+  order_id: number;
+  order_items: Product[];
   created_at: string;
   updated_at: string | null;
   deleted_at: string | null;

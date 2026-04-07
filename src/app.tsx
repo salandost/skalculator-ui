@@ -10,6 +10,8 @@ import { ThemeProvider } from 'src/theme/theme-provider';
 
 import { Iconify } from 'src/components/iconify';
 
+import { useLocalStore } from './state';
+
 // ----------------------------------------------------------------------
 
 type AppProps = {
@@ -18,6 +20,7 @@ type AppProps = {
 
 export default function App({ children }: AppProps) {
   useScrollToTop();
+  // const {theme} = useLocalStore()
 
   const githubButton = () => (
     <Fab
