@@ -1,20 +1,25 @@
 import { create } from 'zustand';
 
-import type { User, Product, Category, Order, DataStore } from './types';
+import { getQueryBuilder } from 'src/utils/get-query-builder';
+
+import type { User, Product, Category, Order, DataStore, GetParams } from './types';
+
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const createDataStore = <T>(endpoint: string) =>
+const DEFAULT_PAGE_SIZE = 10;
+
+const createDataStore = <T>(endpoint: string, getParams?: GetParams<T>) =>
   create<DataStore<T>>((set) => ({
     data: [],
     item: null,
     isLoading: false,
     error: null,
-
+    getParams,
     getData: async () => {
       set({ isLoading: true, error: null });
       try {
-        const response = await fetch(`${apiUrl}${endpoint}`);
+        const response = await fetch(`${apiUrl}${endpoint}/${getParams ? getQueryBuilder(getParams) : ''}`);
         if (!response.ok) throw new Error(`Failed to fetch ${endpoint}: ${response.status}`);
         const { data } = await response.json();
         set({ data, isLoading: false });

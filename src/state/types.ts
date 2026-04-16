@@ -1,6 +1,18 @@
+export interface GetParams<T> {
+  filterBy?: string;
+  filterValue?: string;
+  sortBy?: string;
+  sortOrder?: 'asc' | 'desc';
+  page?: number;
+  limit?: number;
+  withDeleted?: boolean;
+  withEntities?: string[];
+}
+
 export interface DataStore<T> {
   data: T[];
   item: T | null;
+  getParams?: GetParams<T>;
   isLoading: boolean;
   error: string | null;
   getData: () => Promise<void>;
@@ -12,11 +24,11 @@ export interface DataStore<T> {
 
 type ColorScheme = 'dark' | 'light'
 
-export interface LocalStore {
-  theme: ColorScheme;
+export interface AuthStore {
   user: User | null;
-  setTheme: (theme: ColorScheme) => void;
+  authData: any | null;
   login: () => Promise<void>
+  logout: () => Promise<void>
 }
 
 export interface User {
@@ -26,6 +38,8 @@ export interface User {
   role: 'admin' | 'manager' | 'cashier';
 }
 
+
+// Product interfaces.
 export interface Product {
   id: number;
   name: string;
@@ -39,6 +53,17 @@ export interface Product {
   deleted_at: string | null;
 }
 
+export interface ProductFilters {
+  name?: string;
+  category?: string;
+  min_price?: number;
+  max_price?: number;
+  created_from?: string;
+  created_to?: string;
+  sku?: number;
+}
+
+// Category interfaces.
 export interface Category {
   id: number;
   name: string;
@@ -47,6 +72,7 @@ export interface Category {
   deleted_at: string | null;
 }
 
+// Order interfaces.
 export interface Order {
   id: number;
   user_id: number;
