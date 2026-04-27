@@ -1,5 +1,11 @@
+import { useState } from 'react';
+
 import Grid from '@mui/material/Grid';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
+import FormControl from '@mui/material/FormControl';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 import { _posts, _tasks, _traffic, _timeline } from 'src/_mock';
@@ -17,31 +23,50 @@ import { AnalyticsConversionRates } from '../analytics-conversion-rates';
 // ----------------------------------------------------------------------
 
 export function OverviewAnalyticsView() {
+  const [store, setStore] = useState('store1');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setStore(event.target.value as string);
+  };
   return (
     <DashboardContent maxWidth="xl">
       <Typography variant="h4" sx={{ mb: { xs: 3, md: 5 } }}>
         Hi, Welcome back 👋
+        {/* <FormControl size='small' sx={{ ml: 2, minWidth: 220, float: 'right' }}>
+          <InputLabel id="demo-simple-select-label">Store</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={store}
+            label="Store"
+            onChange={handleChange}
+          >
+            <MenuItem value='store1'>All stores</MenuItem>
+            <MenuItem value='store2'>Store 1</MenuItem>
+            <MenuItem value='store3'>Store 2</MenuItem>
+          </Select>
+        </FormControl> */}
       </Typography>
 
       <Grid container spacing={3}>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <AnalyticsWidgetSummary
             title="Weekly sales"
-            percent={2.6}
-            total={714000}
+            percent={4.6}
+            total={214000}
             icon={<img alt="Weekly sales" src="/assets/icons/glass/ic-glass-bag.svg" />}
             chart={{
               categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-              series: [22, 8, 35, 50, 82, 84, 77, 12],
+              series: [22, 8, 35, 20, 82, 84, 77, 12],
             }}
           />
         </Grid>
 
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <AnalyticsWidgetSummary
-            title="New users"
+            title="Customers"
             percent={-0.1}
-            total={1352831}
+            total={232831}
             color="secondary"
             icon={<img alt="New users" src="/assets/icons/glass/ic-glass-users.svg" />}
             chart={{
@@ -55,31 +80,31 @@ export function OverviewAnalyticsView() {
           <AnalyticsWidgetSummary
             title="Purchase orders"
             percent={2.8}
-            total={1723315}
+            total={172315}
             color="warning"
             icon={<img alt="Purchase orders" src="/assets/icons/glass/ic-glass-buy.svg" />}
             chart={{
               categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-              series: [40, 70, 50, 28, 70, 75, 7, 64],
+              series: [40, 70, 50, 28, 70, 25, 7, 64],
             }}
           />
         </Grid>
 
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <AnalyticsWidgetSummary
-            title="Messages"
-            percent={3.6}
-            total={234}
+            title="Stock products"
+            percent={3.9}
+            total={216}
             color="error"
             icon={<img alt="Messages" src="/assets/icons/glass/ic-glass-message.svg" />}
             chart={{
               categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-              series: [56, 30, 23, 54, 47, 40, 62, 73],
+              series: [26, 30, 23, 54, 57, 40, 62, 73],
             }}
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+        {/* <Grid size={{ xs: 12, md: 6, lg: 4 }}>
           <AnalyticsCurrentVisits
             title="Current visits"
             chart={{
@@ -91,9 +116,9 @@ export function OverviewAnalyticsView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid size={{ xs: 12, md: 6, lg: 8 }}>
+        {/* <Grid size={{ xs: 12, md: 6, lg: 8 }}>
           <AnalyticsWebsiteVisits
             title="Website visits"
             subheader="(+43%) than last year"
@@ -105,9 +130,9 @@ export function OverviewAnalyticsView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid size={{ xs: 12, md: 6, lg: 8 }}>
+        {/* <Grid size={{ xs: 12, md: 6, lg: 8 }}>
           <AnalyticsConversionRates
             title="Conversion rates"
             subheader="(+43%) than last year"
@@ -119,9 +144,9 @@ export function OverviewAnalyticsView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+        {/* <Grid size={{ xs: 12, md: 6, lg: 4 }}>
           <AnalyticsCurrentSubject
             title="Current subject"
             chart={{
@@ -137,18 +162,18 @@ export function OverviewAnalyticsView() {
 
         <Grid size={{ xs: 12, md: 6, lg: 8 }}>
           <AnalyticsNews title="News" list={_posts.slice(0, 5)} />
-        </Grid>
+        </Grid> */}
 
         <Grid size={{ xs: 12, md: 6, lg: 4 }}>
           <AnalyticsOrderTimeline title="Order timeline" list={_timeline} />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+        {/* <Grid size={{ xs: 12, md: 6, lg: 4 }}>
           <AnalyticsTrafficBySite title="Traffic by site" list={_traffic} />
-        </Grid>
+        </Grid> */}
 
         <Grid size={{ xs: 12, md: 6, lg: 8 }}>
-          <AnalyticsTasks title="Tasks" list={_tasks} />
+          <AnalyticsTasks title="Reports" list={_tasks} />
         </Grid>
       </Grid>
     </DashboardContent>

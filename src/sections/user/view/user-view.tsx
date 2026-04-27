@@ -56,7 +56,7 @@ export function UserView() {
           color="inherit"
           startIcon={<Iconify icon="mingcute:add-line" />}
         >
-          New user
+          New employee
         </Button>
       </Box>
 
@@ -87,10 +87,9 @@ export function UserView() {
                 }
                 headLabel={[
                   { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
+                  { id: 'company', label: 'Store' },
                   { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
+                  { id: 'employmentDate', label: 'Employment Date', align: 'center' },
                   { id: '' },
                 ]}
               />

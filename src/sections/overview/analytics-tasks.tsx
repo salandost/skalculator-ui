@@ -7,6 +7,7 @@ import { usePopover } from 'minimal-shared/hooks';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import Divider from '@mui/material/Divider';
 import MenuList from '@mui/material/MenuList';
@@ -57,6 +58,9 @@ export function AnalyticsTasks({ title, subheader, list, sx, ...other }: Props) 
           ))}
         </Stack>
       </Scrollbar>
+      <Button fullWidth size="large" color="inherit" sx={{ borderRadius: 0, mt: 2 }}>
+          Export CSV
+      </Button>
     </Card>
   );
 }
@@ -123,12 +127,12 @@ function TaskItem({ item, selected, onChange, sx, ...other }: TaskItemProps) {
           sx={{ flexGrow: 1, m: 0 }}
         />
 
-        <IconButton color={menuActions.open ? 'inherit' : 'default'} onClick={menuActions.onOpen}>
+        {/* <IconButton color={menuActions.open ? 'inherit' : 'default'} onClick={menuActions.onOpen}>
           <Iconify icon="eva:more-vertical-fill" />
-        </IconButton>
+        </IconButton> */}
       </Box>
 
-      <Popover
+      {/* <Popover
         open={menuActions.open}
         anchorEl={menuActions.anchorEl}
         onClose={menuActions.onClose}
@@ -173,7 +177,7 @@ function TaskItem({ item, selected, onChange, sx, ...other }: TaskItemProps) {
             Delete
           </MenuItem>
         </MenuList>
-      </Popover>
+      </Popover> */}
     </>
   );
 }

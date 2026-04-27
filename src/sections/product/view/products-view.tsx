@@ -2,11 +2,14 @@ import { useState, useEffect, useCallback } from 'react';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import Pagination from '@mui/material/Pagination';
 import Typography from '@mui/material/Typography';
 
 import { useProductStore } from 'src/state';
 import { DashboardContent } from 'src/layouts/dashboard';
+
+import { Iconify } from 'src/components/iconify/iconify';
 
 import { ProductItem } from '../product-item';
 import { ProductSort } from '../product-sort';
@@ -53,7 +56,7 @@ const defaultFilters = {
   price: '',
   gender: [GENDER_OPTIONS[0].value],
   colors: [COLOR_OPTIONS[4]],
-  rating: RATING_OPTIONS[0],
+  // rating: RATING_OPTIONS[0],
   category: CATEGORY_OPTIONS[0].value,
 };
 
@@ -62,7 +65,6 @@ export function ProductsView() {
 
   useEffect(() => {
     getData();
-    console.log('Data ok')
   }, [getData]);
 
   const [sortBy, setSortBy] = useState('featured');
@@ -94,11 +96,26 @@ export function ProductsView() {
 
   return (
     <DashboardContent>
-      <CartIcon totalItems={8} />
+      {/* <CartIcon totalItems={8} /> */}
 
-      <Typography variant="h4" sx={{ mb: 5 }}>
-        Products
-      </Typography>
+      <Box
+        sx={{
+          mb: 5,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h4" sx={{ flexGrow: 1 }}>
+          Products
+        </Typography>
+        <Button
+          variant="contained"
+          color="inherit"
+          startIcon={<Iconify icon="mingcute:add-line" />}
+        >
+          New product
+        </Button>
+      </Box>
       <Box
         sx={{
           mb: 5,

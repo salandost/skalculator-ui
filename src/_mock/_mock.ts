@@ -177,10 +177,11 @@ export const _description = (index: number) =>
 
 export const _taskNames = (index: number) =>
   [
+    `Prepare Weekly Financial Report`,
     `Prepare Monthly Financial Report`,
-    `Design New Marketing Campaign`,
+    `Prepare Yearly Financial Report`,
     `Analyze Customer Feedback`,
-    `Update Website Content`,
+    `Update Product Content`,
     `Conduct Market Research`,
     `Develop Software Application`,
     `Organize Team Meeting`,

@@ -9,6 +9,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
+import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
@@ -58,6 +59,9 @@ export function ProductView() {
 
   return (
     <DashboardContent>
+      <Typography variant="h4" sx={{ mb: 5 }}>
+        Edit Product
+      </Typography>
       {!isLoading && error === null && product ? (
         <FormControl variant="outlined" fullWidth>
           <Stack
@@ -69,16 +73,17 @@ export function ProductView() {
             }}
             spacing={2}
           >
-            <TextField value={product?.name} label="Name" variant="outlined" />
+            <TextField defaultValue={product?.name} label="Name" variant="outlined" />
             <TextField
-              value={product?.description}
+              defaultValue={product?.description}
               label="Description"
               variant="outlined"
               multiline
             />
-            <TextField value={product?.price} label="Price" variant="outlined" type="number" />
-            <TextField value={product?.sku} label="SKU" variant="outlined" type="number" />
-            <TextField value={product?.image} label="Image URL" variant="outlined" />
+            <TextField defaultValue={product?.price} label="Price" variant="outlined" type="number" />
+            <TextField defaultValue={product?.sku} label="SKU" variant="outlined" type="number" />
+            <TextField  label="Amount" variant="outlined" type="number" />
+            <TextField defaultValue={product?.image} label="Image URL" variant="outlined" />
             <FormControl fullWidth>
               <InputLabel id="multiple-category-label">Category</InputLabel>
               <Select
@@ -90,14 +95,16 @@ export function ProductView() {
                 input={<OutlinedInput label="Category" />}
                 MenuProps={MenuProps}
               >
-                {categories.map((category: typeof categories[number]) => (
+                {categories.map((category: (typeof categories)[number]) => (
                   <MenuItem key={category.id} value={category.name}>
                     {category.name}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
-            <Button variant="outlined">Update</Button>
+            <Button variant="outlined" size='medium' sx={{maxWidth: 290, marginTop: 100, alignSelf: 'left'}}>
+              Save Changes
+            </Button>
           </Stack>
         </FormControl>
       ) : (

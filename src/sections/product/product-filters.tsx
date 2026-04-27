@@ -21,7 +21,7 @@ import { ColorPicker } from 'src/components/color-utils';
 
 export type FiltersProps = {
   price: string;
-  rating: string;
+  // rating: string;
   gender: string[];
   colors: string[];
   category: string;
@@ -134,37 +134,37 @@ export function ProductFilters({
     </Stack>
   );
 
-  const renderRating = (
-    <Stack spacing={1}>
-      <Typography variant="subtitle2" sx={{ mb: 2 }}>
-        Rating
-      </Typography>
+  // const renderRating = (
+  //   <Stack spacing={1}>
+  //     <Typography variant="subtitle2" sx={{ mb: 2 }}>
+  //       Rating
+  //     </Typography>
 
-      {options.ratings.map((option, index) => (
-        <Box
-          key={option}
-          onClick={() => onSetFilters({ rating: option })}
-          sx={{
-            mb: 1,
-            gap: 1,
-            ml: -1,
-            p: 0.5,
-            display: 'flex',
-            borderRadius: 1,
-            cursor: 'pointer',
-            typography: 'body2',
-            alignItems: 'center',
-            '&:hover': { opacity: 0.48 },
-            ...(filters.rating === option && {
-              bgcolor: 'action.selected',
-            }),
-          }}
-        >
-          <Rating readOnly value={4 - index} /> & Up
-        </Box>
-      ))}
-    </Stack>
-  );
+  //     {options.ratings.map((option, index) => (
+  //       <Box
+  //         key={option}
+  //         onClick={() => onSetFilters({ rating: option })}
+  //         sx={{
+  //           mb: 1,
+  //           gap: 1,
+  //           ml: -1,
+  //           p: 0.5,
+  //           display: 'flex',
+  //           borderRadius: 1,
+  //           cursor: 'pointer',
+  //           typography: 'body2',
+  //           alignItems: 'center',
+  //           '&:hover': { opacity: 0.48 },
+  //           ...(filters.rating === option && {
+  //             bgcolor: 'action.selected',
+  //           }),
+  //         }}
+  //       >
+  //         <Rating readOnly value={4 - index} /> & Up
+  //       </Box>
+  //     ))}
+  //   </Stack>
+  // );
 
   return (
     <>
@@ -219,11 +219,11 @@ export function ProductFilters({
 
         <Scrollbar>
           <Stack spacing={3} sx={{ p: 3 }}>
-            {renderGender}
+            {/* {renderGender} */}
             {renderCategory}
-            {renderColors}
+            {/* {renderColors} */}
             {renderPrice}
-            {renderRating}
+            {/* {renderRating} */}
           </Stack>
         </Scrollbar>
       </Drawer>

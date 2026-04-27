@@ -10,7 +10,6 @@ import TableCell from '@mui/material/TableCell';
 import IconButton from '@mui/material/IconButton';
 import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 
-import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -19,10 +18,9 @@ export type UserProps = {
   id: string;
   name: string;
   role: string;
-  status: string;
   company: string;
   avatarUrl: string;
-  isVerified: boolean;
+  employmentDate: string;
 };
 
 type UserTableRowProps = {
@@ -67,15 +65,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         <TableCell>{row.role}</TableCell>
 
         <TableCell align="center">
-          {row.isVerified ? (
-            <Iconify width={22} icon="solar:check-circle-bold" sx={{ color: 'success.main' }} />
-          ) : (
-            '-'
-          )}
-        </TableCell>
-
-        <TableCell>
-          <Label color={(row.status === 'banned' && 'error') || 'success'}>{row.status}</Label>
+          {row.employmentDate}
         </TableCell>
 
         <TableCell align="right">

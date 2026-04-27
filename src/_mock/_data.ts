@@ -25,22 +25,14 @@ export const _users = [...Array(24)].map((_, index) => ({
   id: _id(index),
   name: _fullName(index),
   company: _company(index),
-  isVerified: _boolean(index),
   avatarUrl: `/assets/images/avatar/avatar-${index + 1}.webp`,
-  status: index % 4 ? 'active' : 'banned',
+  employmentDate: _times(index),
   role:
     [
-      'Leader',
-      'Hr Manager',
-      'UI Designer',
-      'UX Designer',
-      'UI/UX Designer',
-      'Project Manager',
-      'Backend Developer',
-      'Full Stack Designer',
-      'Front End Developer',
-      'Full Stack Developer',
-    ][index] || 'UI Designer',
+      'Admin',
+      'Manager',
+      'Cashier',
+    ][index] || 'Cashier',
 }));
 
 // ----------------------------------------------------------------------
@@ -105,14 +97,9 @@ export const _langs = [
     icon: '/assets/icons/flags/ic-flag-en.svg',
   },
   {
-    value: 'de',
-    label: 'German',
-    icon: '/assets/icons/flags/ic-flag-de.svg',
-  },
-  {
-    value: 'fr',
-    label: 'French',
-    icon: '/assets/icons/flags/ic-flag-fr.svg',
+    value: 'am',
+    label: 'Armenian',
+    icon: '/assets/icons/flags/ic-flag-am.svg',
   },
 ];
 
@@ -121,11 +108,11 @@ export const _langs = [
 export const _timeline = [...Array(5)].map((_, index) => ({
   id: _id(index),
   title: [
-    '1983, orders, $4220',
-    '12 Invoices have been paid',
-    'Order #37745 from September',
-    'New order placed #XF-2356',
-    'New order placed #XF-2346',
+    'New order placed #37746 - $42',
+    'New order placed #37745 - $54',
+    'New order placed #37744 - $23',
+    'Order cancled by cashier - 5$',
+    'New order placed #37742 - $17',
   ][index],
   type: `order${index + 1}`,
   time: _times(index),
@@ -154,7 +141,7 @@ export const _traffic = [
   },
 ];
 
-export const _tasks = Array.from({ length: 5 }, (_, index) => ({
+export const _tasks = Array.from({ length: 3 }, (_, index) => ({
   id: _id(index),
   name: _taskNames(index),
 }));

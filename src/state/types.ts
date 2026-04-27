@@ -22,13 +22,11 @@ export interface DataStore<T> {
   deleteItem?: (id: number) => Promise<void>;
 }
 
-type ColorScheme = 'dark' | 'light'
-
 export interface AuthStore {
   user: User | null;
   authData: any | null;
-  login: () => Promise<void>
-  logout: () => Promise<void>
+  login: () => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 export interface User {
@@ -37,7 +35,6 @@ export interface User {
   username: string;
   role: 'admin' | 'manager' | 'cashier';
 }
-
 
 // Product interfaces.
 export interface Product {
